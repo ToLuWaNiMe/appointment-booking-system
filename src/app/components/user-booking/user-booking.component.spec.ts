@@ -1,5 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { UserBookingComponent } from './user-booking.component';
+import { CalendarService } from '../../services/calendar.service';
 
 describe('UserBookingComponent', () => { // Updated describe block
   let component: UserBookingComponent; // Updated variable type
@@ -7,7 +8,8 @@ describe('UserBookingComponent', () => { // Updated describe block
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [UserBookingComponent] // Updated component reference
+      declarations: [UserBookingComponent],
+      providers: [CalendarService],
     })
     .compileComponents();
 
@@ -16,7 +18,9 @@ describe('UserBookingComponent', () => { // Updated describe block
     fixture.detectChanges();
   });
 
-  it('should create', () => {
-    expect(component).toBeTruthy();
+  it('should generate calendar weeks', () => {
+    component.currentDate = new Date('2024-05-01');
+    component.generateCalendar();
+    expect(component.weeks.length).toBeGreaterThan(0);
   });
 });
