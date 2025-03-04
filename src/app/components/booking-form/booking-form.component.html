@@ -1,0 +1,22 @@
+<div class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center">
+  <div class="bg-white p-6 rounded-lg max-w-sm w-full">
+    <h3 class="text-lg font-bold mb-4">
+      Book Slot: {{ selectedSlot | date:'MMM d, HH:mm' }}
+    </h3>
+    <form [formGroup]="bookingForm" (ngSubmit)="onSubmit()">
+      <div class="mb-4">
+        <label class="block text-sm font-medium mb-1">Name</label>
+        <input formControlName="userName" type="text"
+               class="w-full p-2 border rounded">
+      </div>
+      <div class="mb-4">
+        <label class="block text-sm font-medium mb-1">Email</label>
+        <input formControlName="email" type="email"
+               class="w-full p-2 border rounded">
+      </div>
+      <button type="submit" class="w-full bg-blue-500 text-white p-2 rounded">
+        Confirm Booking
+      </button>
+    </form>
+  </div>
+</div>

@@ -1,0 +1,42 @@
+<div class="p-4">
+  <div class="flex justify-between items-center mb-4">
+    <h2 class="text-xl font-bold">
+      {{ currentDate | date:'MMMM y' }}
+    </h2>
+    <button (click)="prevMonth()" class="px-3 py-1 bg-gray-100 rounded">←</button>
+    <button (click)="nextMonth()" class="px-3 py-1 bg-gray-100 rounded">→</button>
+    <button (click)="refreshData()" class="px-3 py-1 bg-blue-500 text-white rounded">Refresh</button>
+  </div>
+
+  <!-- Weekdays Header -->
+  <div class="grid grid-cols-7 gap-1 mb-2">
+    <div *ngFor="let day of ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']"
+         class="text-center font-medium p-2 bg-gray-50">
+      {{ day }}
+    </div>
+  </div>
+
+  <!-- Calendar Days -->
+  <div *ngFor="let week of weeks" class="grid grid-cols-7 gap-1">
+    <div *ngFor="let day of week"
+         class="p-2 border rounded min-h-24"
+         [class.bg-gray-100]="day.getMonth() !== currentDate.getMonth()">
+      <div class="text-sm">{{ day.getDate() }}</div>
+
+      <!-- Time Slots -->
+      <div *ngFor="let slot of getSlotsForDay(day)"
+           class="text-xs p-1 mt-1 cursor-pointer rounded
+                  hover:bg-blue-100"
+           (click)="openBookingForm(slot)">
+        {{ slot | date:'HH:mm' }}
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Add at the end of the template -->
+<app-booking-form
+  *ngIf="selectedSlot"
+  [selectedSlot]="selectedSlot"
+  (booked)="onBooked()">
+</app-booking-form>
