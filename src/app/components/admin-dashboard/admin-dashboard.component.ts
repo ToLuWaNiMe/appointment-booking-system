@@ -2,14 +2,14 @@ import { Component, OnInit } from '@angular/core';
 import { AdminService } from '../../services/admin.service';
 import { Appointment } from '../../models/appointment.model';
 import { CommonModule } from '@angular/common';
-import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
+import { HttpClientModule, HttpClient } from '@angular/common/http';
 
 
 @Component({
   selector: 'app-admin-dashboard',
   standalone: true,
-  imports: [ CommonModule , BrowserModule,FormsModule],
+  imports: [ CommonModule ,FormsModule , HttpClientModule],
   templateUrl: './admin-dashboard.component.html',
 })
 export class AdminDashboardComponent implements OnInit {

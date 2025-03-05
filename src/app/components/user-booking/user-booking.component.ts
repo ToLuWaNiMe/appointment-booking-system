@@ -1,14 +1,14 @@
 import { Component, OnInit } from '@angular/core';
 import { CalendarService } from '../../services/calendar.service';
 import { NgModule } from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
 import { BookingFormComponent } from '../booking-form/booking-form.component'; // Import BookingFormComponent
 import { CommonModule } from '@angular/common';
+import { HttpClientModule, HttpClient } from '@angular/common/http';
 
 @Component({
-  selector: 'app-calendar',
+  selector: 'app-user-booking',
   templateUrl: './user-booking.component.html',
-  imports: [ BrowserModule, CommonModule, BookingFormComponent],
+  imports: [CommonModule, BookingFormComponent, HttpClientModule], // Add BookingFormComponent
   standalone: true, // Make it standalone
 })
 export class UserBookingComponent implements OnInit {
