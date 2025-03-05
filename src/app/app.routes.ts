@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { UserBookingComponent } from './user-booking/user-booking.component';
+import { UserBookingComponent } from './components/user-booking/user-booking.component';
 import { AdminDashboardComponent } from './components/admin-dashboard/admin-dashboard.component';
 
 export const routes: Routes = [
