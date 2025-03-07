@@ -1,6 +1,7 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { FormBuilder, Validators, ReactiveFormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common'; // Import CommonModule
+//import { HttpClientModule, HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-booking-form',
@@ -25,7 +26,7 @@ export class BookingFormComponent {
         ...this.bookingForm.value,
         date_time: this.selectedSlot,
       };
-      // Emit to parent component (CalendarComponent)
+      // Emit to parent component (User-BookingComponent)
       this.booked.emit();
     }
   }

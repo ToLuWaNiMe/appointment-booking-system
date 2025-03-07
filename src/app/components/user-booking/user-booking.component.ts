@@ -1,14 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { CalendarService } from '../../services/calendar.service';
-import { NgModule } from '@angular/core';
 import { BookingFormComponent } from '../booking-form/booking-form.component'; // Import BookingFormComponent
 import { CommonModule } from '@angular/common';
-import { HttpClientModule, HttpClient } from '@angular/common/http';
+//import { HttpClientModule, HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-user-booking',
   templateUrl: './user-booking.component.html',
-  imports: [CommonModule, BookingFormComponent, HttpClientModule], // Add BookingFormComponent
+  imports: [CommonModule, BookingFormComponent], // Add BookingFormComponent
   standalone: true, // Make it standalone
 })
 export class UserBookingComponent implements OnInit {
@@ -89,7 +88,7 @@ export class UserBookingComponent implements OnInit {
   getSlotsForDay(day: Date): Date[] {
     const dayStr = day.toISOString().slice(0, 10);
     return this.availability
-      .filter(slot => slot.startsWith(dayStr))
+      .filter(slot => slot?.startsWith?.(dayStr))
       .map(slot => new Date(slot));
   }
 
