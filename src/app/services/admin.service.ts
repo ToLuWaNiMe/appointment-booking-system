@@ -4,7 +4,7 @@ import { Observable } from 'rxjs';
 import { Appointment } from '.././models/appointment.model';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class AdminService {
   private apiUrl = 'http://localhost:3000/appointments'; // Update in production

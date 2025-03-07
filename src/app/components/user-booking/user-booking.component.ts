@@ -2,13 +2,13 @@ import { Component, OnInit } from '@angular/core';
 import { CalendarService } from '../../services/calendar.service';
 import { BookingFormComponent } from '../booking-form/booking-form.component'; // Import BookingFormComponent
 import { CommonModule } from '@angular/common';
-//import { HttpClientModule, HttpClient } from '@angular/common/http';
+import { HttpClientModule, HttpClient } from '@angular/common/http';
 
 @Component({
-  selector: 'app-user-booking',
-  templateUrl: './user-booking.component.html',
-  imports: [CommonModule, BookingFormComponent], // Add BookingFormComponent
-  standalone: true, // Make it standalone
+    selector: 'app-user-booking',
+    templateUrl: './user-booking.component.html',
+    imports: [CommonModule, BookingFormComponent, HttpClientModule],
+    standalone: true
 })
 export class UserBookingComponent implements OnInit {
   currentDate: Date = new Date();

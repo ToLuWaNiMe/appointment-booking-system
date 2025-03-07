@@ -1,13 +1,14 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Component, EventEmitter, Input, Output, Inject } from '@angular/core';
 import { FormBuilder, Validators, ReactiveFormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common'; // Import CommonModule
 //import { HttpClientModule, HttpClient } from '@angular/common/http';
 
 @Component({
-  selector: 'app-booking-form',
-  standalone: true, // Make it standalone
-  imports: [ReactiveFormsModule, CommonModule], // Add imports
-  templateUrl: './booking-form.component.html',
+    selector: 'app-booking-form', // Make it standalone
+    imports: [ReactiveFormsModule, CommonModule], // Add imports
+    providers: [FormBuilder],
+    templateUrl: './booking-form.component.html',
+    standalone: true
 })
 export class BookingFormComponent {
   @Input() selectedSlot!: Date; // Change to Date
@@ -18,7 +19,7 @@ export class BookingFormComponent {
     email: ['', [Validators.required, Validators.email]],
   });
 
-  constructor(private fb: FormBuilder) {}
+  constructor(@Inject(FormBuilder) private fb: FormBuilder) {}
 
   onSubmit(): void {
     if (this.bookingForm.valid) {

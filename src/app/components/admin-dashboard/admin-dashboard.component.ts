@@ -3,14 +3,14 @@ import { AdminService } from '../../services/admin.service';
 import { Appointment } from '../../models/appointment.model';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-//import { HttpClientModule, HttpClient } from '@angular/common/http';
-
+import { HttpClientModule, HttpClient } from '@angular/common/http';
+import { environment } from '../../../environments/environment';
 
 @Component({
-  selector: 'app-admin-dashboard',
-  standalone: true,
-  imports: [ CommonModule ,FormsModule],
-  templateUrl: './admin-dashboard.component.html',
+    selector: 'app-admin-dashboard',
+    imports: [CommonModule,FormsModule, HttpClientModule ],
+    templateUrl: './admin-dashboard.component.html',
+    standalone: true
 })
 export class AdminDashboardComponent implements OnInit {
   appointments: Appointment[] = [];
@@ -20,7 +20,7 @@ export class AdminDashboardComponent implements OnInit {
   constructor(private adminService: AdminService) {}
 
   ngOnInit(): void {
-    const apiKey = 'your_admin_api_key'; // Replace with actual API key
+    const apiKey = environment.apiKey; // Replace with actual API key
     this.adminService.getAllAppointments(apiKey).subscribe({
       next: (data) => {
         this.appointments = data;

@@ -9,8 +9,3 @@ export const routes: Routes = [
   { path: '', redirectTo: '/user-booking', pathMatch: 'full' } // Default route
 ];
 
-@NgModule({
-  imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
-})
-export class AppRoutes { }
