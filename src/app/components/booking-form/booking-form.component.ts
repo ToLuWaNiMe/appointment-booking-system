@@ -1,7 +1,6 @@
 import { Component, EventEmitter, Input, Output, Inject } from '@angular/core';
 import { FormBuilder, Validators, ReactiveFormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common'; // Import CommonModule
-//import { HttpClientModule, HttpClient } from '@angular/common/http';
 
 @Component({
     selector: 'app-booking-form', // Make it standalone
